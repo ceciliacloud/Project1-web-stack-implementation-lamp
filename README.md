@@ -1,5 +1,5 @@
 # web-stack-implementation
-# **Prerequisites for the project**
+## **Prerequisites for the project**
 
 Before starting this project, it was necessary to set up a virtual enviornment. In order to achieve this, first, I created a free [AWS account](https://aws.amazon.com/)and then I created a virtual server using the Ubuntu Server OS.
 
@@ -13,4 +13,4 @@ Here is how I did it:
 
 2. Once I had setup my account, I logged in as the IAM user. I navigated to the top-right of my screen and selected my preferred region (the closest to me). Next, I navigated to the EC2 service, and launched an instance. I selected a Ubuntu Server 20.04 LTS (HVM) as the Amazon Machine Image (AMI)and selected a storage t2.micro as the instance type.
 
-#**Here is a video walkthrough of the aforementioned steps** 
+**Here is a video walkthrough of the aforementioned steps** 
