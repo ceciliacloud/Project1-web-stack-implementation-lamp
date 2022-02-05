@@ -7,13 +7,15 @@ What is a Web Stack? It is is a group of software components, used to implement 
 ## LINUX
 ### Setting up your virtual environment
 
+Linux is an operating system that manages the underlying hardware on your PC. It is an open-source software that is used worldwide. It is flexible and easy to configure.
+
 In order to complete this project, it is necessary to set up a virtual environment. In order to achieve this, first, create a free [AWS account](https://aws.amazon.com/) and then create a virtual server using the Ubuntu Server OS. More details to come shortly!
 
 You may be wondering, 'what is AWS'? Amazon Web Services (AWS) is the leading Cloud Service Provider in the world. AWS offers a wide variety of databases and services for different types of applications. This allows users to choose the right tool for the job while receiving the best cost and performance. 
 
 AWS offers a Free Tier for newly registered account users. This enables users to try out some AWS services free of charge within certain usage limits. For this project, we will utilize the [EC2 (Elastic Compute Cloud)](https://aws.amazon.com/ec2/features/) service, which is covered by the Free Tier!
 
-Let's get started!
+**Let's get started!**
 
 Begin by registering and setting up an [AWS account](https://portal.aws.amazon.com/billing/signup#/start) and following the directions on the screen. Once you have created your AWS account, navigate to the login page and type in your credentials.
 
@@ -86,14 +88,14 @@ Next, you will be asked if you want to continue connecting. Type `Yes` and press
 
 ![](./images/loggedin.png)
 
- To verify that you are connected, you should see your IP address on the top-right of the screen. Nice job! You have successfully connected to your Linux server in the Cloud enviornment.
+ To verify that you are connected, you should see your IP address on the top-right of the screen. Nice job! You have successfully connected to your Linux server in the Cloud environment.
 
 ![](./images/loggedinec2.png)
 
 ## APACHE
-### Installing Apache on the virtual enviornment
+### Installing Apache on the virtual environment
 
-What is Apache? **ADD DESCRIPTION**
+What is Apache? Apache is a widely-used fast, reliable, and secure web server software. A web server acts as a middleman between the website visitor browser and the server.
 
 Now we will install Apache using Ubuntu’s package manager: ***[‘apt’](https://guide.ubuntu-fr.org/server/apt.html)*** Begin by using the `$ sudo apt update` command to check for any available updates. 
 
@@ -140,7 +142,7 @@ You should see the following web page. This is the Apache2 Ubuntu Default page:
 ![](./images/verification.png)
 
 # MySQL
-## Installing MySQL on the virtual enviornment
+## Installing MySQL on the virtual environment
 
 Congratulations on setting up and running your Apache web server. Next, we will install MySQL, which is an open-source relational database management system. This will allow us to store and manage data for the website.
 
@@ -172,7 +174,7 @@ Please choose either `0` = LOW, `1` = MEDIUM or `2` = STRONG
 
 ![](./images/password.png)
 
-Once you are satisfied with your password, enter it then type `Y` for “yes” when asked if you want to continue with the password provided.
+Once you are satisfied with your password, enter it then type `Y` for “Yes” when asked if you want to continue with the password provided.
 
 For the rest of the questions, type `Y` for "Yes" and press "Enter" on your keyboard at each prompt. 
 
@@ -210,12 +212,12 @@ We can simultaneously install all three of these packages. Begin by running the 
 
 ![](./images/install3.png)
 
-Congrats! The LAMP stack now completely installed and fully operational.
+Congrats! The LAMP stack is now completely installed and fully operational.
 ## Creating a Virtual Host using Apache
 
 Next, we will create a virtual host using Apache. A virtual host allows us to have multiple websites located on a single machine! This will be used to test our setup.
 
-Begin by createing the directory for `projectlamp` using the following command:
+Begin by creating the directory for `projectlamp` using the following command:
 
 `$ sudo mkdir /var/www/projectlamp`
 
