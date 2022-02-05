@@ -1,6 +1,6 @@
 # web-stack-implementation
 
-Hello and welcome to the Web Stack Implementation proejct!
+Hello and welcome to the Web Stack Implementation project!
 
 What is a Web Stack? It is is a group of software components, used to implement or set up various applications (for example, a website). The "stack" refers to the specific layered components (e.g. OS system, webserver, script interpreter, and database) which are built ontop of each other. One of the most popular web stacks include LAMP, which stands for Linux, Apache, MySQL, and PHP. The LAMP stack will be used for this project! 
 
@@ -252,7 +252,7 @@ Next, use the ***a2ensite*** command to enable the new virtual host:
 
 `$ sudo a2ensite projectlamp`
 
-It may want to disable the default website that comes installed with Apache. This is a must if you are not using a custom domain name, because in this case Apache’s default configuration would overwrite your virtual host. 
+You may want to disable the default website that comes installed with Apache. This is necessary if you are not using a custom domain name, because in this case Apache’s default configuration would overwrite your virtual host. 
 
 To disable Apache’s default website use the following command:
 
@@ -324,18 +324,4 @@ Don't forget to terminate your EC2 instance and it's associated components on th
 
 `$ sudo rm /var/www/projectlamp/index.php`
 
-Credit: This guide was inspired by [SkillEmbassy] (samuelbartels20/web-stack-implementation)
-
-
-
-
-
-
-
-
-
-
-
-------------------------------------------------
-![](./images/IMAGENAME.png)
-### **Step 1 - ABC...**
+**Credit: This guide was inspired by [SkillEmbassy](samuelbartels20/web-stack-implementation)**
