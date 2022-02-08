@@ -72,7 +72,9 @@ Begin by opening Terminal. Once you have opened Terminal, use the `cd` command t
 
 Once you have located the key pair, use the command below to activate the key file (.pem). This command will also change permissions (otherwise you may get the error “Bad Permissions”):
 
-`$ sudo chmod 0400 <private-key-name>.pem`
+```
+$ sudo chmod 0400 <private-key-name>.pem
+```
 
 When prompted, type the password for your local PC and press Enter on your keyboard.
 
@@ -82,7 +84,9 @@ Next, go back to the AWS console for a moment, and navigate to your running EC2 
 
 Now that you've copied the Public IP address, go back to Terminal. Connect to the EC2 instance by using the command below:
 
-`$ ssh -i <private-key-name>.pem ubuntu@<Public-IP-address>`
+```
+$ ssh -i <private-key-name>.pem ubuntu@<Public-IP-address>
+```
 
 Next, you will be asked if you want to continue connecting. Type `Yes` and press Enter on your keyboard.
 
@@ -97,15 +101,23 @@ Next, you will be asked if you want to continue connecting. Type `Yes` and press
 
 What is Apache? Apache is a widely-used fast, reliable, and secure web server software. A web server acts as a middleman between the website visitor browser and the server.
 
-Now we will install Apache using Ubuntu’s package manager: ***[‘apt’](https://guide.ubuntu-fr.org/server/apt.html)*** Begin by using the `$ sudo apt update` command to check for any available updates. 
+Now we will install Apache using Ubuntu’s package manager: **[‘apt’](https://guide.ubuntu-fr.org/server/apt.html)** Begin by using the `$ sudo apt update` command to check for any available updates. 
 
-Next, run the `$ sudo apt install apache2` command to run the Apache package installation. 
+Next, run the following command to run the Apache package installation:
+
+``` 
+$ sudo apt install apache2
+``` 
 
 Terminal will generate a series of code. Once completed, you will see something like this:
 
 ![](./images/installapache.png)
 
-Once completed, use the following command to verify that Apache2 is running as a service in our OS: `$ sudo systemctl status apache2`
+Once completed, use the following command to verify that Apache2 is running as a service in our OS: 
+
+```
+$ sudo systemctl status apache2
+```
 
 If there is a green dot, then that means it's running! Nice work!
 
@@ -125,17 +137,24 @@ Next, click on "Edit Inbound Rules", as highlighted in the image below:
 
 ![](./images/editrules.png)
 
-Next, click "add rule" and configure the inbound rules using HTTP as the protocol and 0.0.0.0/0 as the source, so that traffic from any IP address can enter. 
+Next, click `add rule` and configure the inbound rules using HTTP as the protocol and 0.0.0.0/0 as the source, so that traffic from any IP address can enter. 
 
 ![](./images/editrules2.png)
 
-Now let's verify whether or not we can receive traffic. On the Terminal, use the `$ curl http://localhost:80` command to send a request the Apache HTTP Server on port 80. You should see something like this:
+Now let's verify whether or not we can receive traffic. On the Terminal, use the  command to send a request the Apache HTTP Server on port 80.
+
+```
+$ curl http://localhost:80
+```
+You should see something like this:
 
 ![](./images/verifyhost.png)
 
 Next, let's try to verify access through the web browser using the public IP address of the EC2 instance. Open a web browser of your choice and then enter the following url (remember to replace contents within the **Anchor Tabs < >**):
 
-`http://<Public-IP-Address>:80`
+```
+http://<Public-IP-Address>:80
+```
 
 You should see the following web page. This is the Apache2 Ubuntu Default page:
 
@@ -148,7 +167,9 @@ Congratulations on setting up and running your Apache web server. Next, we will 
 
 Begin by using the following command to install MySQL:
 
-`$ sudo apt install mysql-server`
+```
+$ sudo apt install mysql-server
+```
 
 When prompted, confirm that you want to proceed with the installation by typing `Y` for "Yes", and then press "Enter" on your Keyboard.
 
@@ -156,7 +177,9 @@ When prompted, confirm that you want to proceed with the installation by typing�
 
 Once the installation is complete, it is best practice to   run a security script in order to add more security access to your database system. Use the following command:
 
-`$ sudo mysql_secure_installation`
+```
+$ sudo mysql_secure_installation
+```
 
 You will be asked to validate password component. Type `Y` for "Yes". 
 
@@ -166,11 +189,11 @@ Please choose either `0` = LOW, `1` = MEDIUM or `2` = STRONG
 
 **Please Note:**
 
-`LOW --- Length >= 8`
+`LOW` --- Length >= 8
 
-`MEDIUM --- Length >= 8, numeric, mixed case, **and** special characters`
+`MEDIUM` --- Length >= 8, numeric, mixed case, **and** special characters
 
-`STRONG --- Length >= 8, numeric, mixed case, special characters **and** dictionary file`
+`STRONG` --- Length >= 8, numeric, mixed case, special characters **and** dictionary file
 
 ![](./images/password.png)
 
@@ -186,7 +209,9 @@ Your Terminal should look something like this:
 
 Next, you can check whether you can log in to the MySQL console by typing the following command. This command allows you to connect to the MySQL server as the administrative user (root user), which is implied by the use of 'sudo' part of the command:
 
-`$ sudo mysql`
+```
+$ sudo mysql
+```
 
 This will connect to the MySQL server as the administrative database user **root**, which is inferred by the use of sudo when running this command. You should see the following output:
 
@@ -194,7 +219,9 @@ This will connect to the MySQL server as the administrative database user **roo
 
 To exit the MySQL console, type the following:
 
-`mysql> exit`
+```
+mysql> exit
+```
 
 ![](./images/exit.png)
 
@@ -208,7 +235,9 @@ In addition to installing **PHP**, we must install **php-mysql**, which is a P
 
 We can simultaneously install all three of these packages. Begin by running the following command on Terminal:
 
-`$ sudo apt install php libapache2-mod-php php-mysql`
+```
+$ sudo apt install php libapache2-mod-php php-mysql
+```
 
 ![](./images/install3.png)
 
@@ -219,15 +248,21 @@ Next, we will create a virtual host using Apache. A virtual host allows us to ha
 
 Begin by creating the directory for `projectlamp` using the following command:
 
-`$ sudo mkdir /var/www/projectlamp`
+```
+$ sudo mkdir /var/www/projectlamp
+```
 
 Next, assign ownership of the directory using the following command:
 
-`$ sudo chown -R $USER:$USER /var/www/projectlamp`
+```
+$ sudo chown -R $USER:$USER /var/www/projectlamp
+```
 
 Next, we must create and open a new configuration file using `vi`, which is a text editor. Use the command below to open a blank file:
 
-`$ sudo vi /etc/apache2/sites-available/projectlamp.conf`
+```
+$ sudo vi /etc/apache2/sites-available/projectlamp.conf
+```
 
 Next, paste in the following  configuration by pressing on `i` on the keyboard to engage the 'insert' mode, then paste the text below:
 
@@ -248,25 +283,35 @@ Next, we will use a series of commands.
 
 To show the new file in the **sites-available** directory, use the following command. With this Virtua lHost configuration, we are telling Apache to serve `projectlamp` using **/var/www/projectlampl** as its web root directory.
 
-`$ sudo ls /etc/apache2/sites-available`
+```
+$ sudo ls /etc/apache2/sites-available
+```
 
 Next, use the ***a2ensite*** command to enable the new virtual host:
 
-`$ sudo a2ensite projectlamp`
+```
+$ sudo a2ensite projectlamp
+```
 
 You may want to disable the default website that comes installed with Apache. This is necessary if you are not using a custom domain name, because in this case Apache’s default configuration would overwrite your virtual host. 
 
 To disable Apache’s default website use the following command:
 
-`$ sudo a2dissite 000-default`
+```
+$ sudo a2dissite 000-default
+```
 
 To make sure your configuration file doesn’t contain syntax errors, run:
 
-`$ sudo apache2ctl configtest`
+```
+$ sudo apache2ctl configtest
+```
 
 Finally, reload Apache so these changes take effect:
 
-`$ sudo systemctl reload apache2`
+```
+$ sudo systemctl reload apache2
+```
 
 Here is what you can expect to see on your Terminal:
 
@@ -274,7 +319,9 @@ Here is what you can expect to see on your Terminal:
 
 Although our website is now active, the web root **/var/www/projectlamp** is still empty. Let's create an index.html file in that location so that we will be able to test that the virtual host works properly. Use the command below:
 
-`sudo echo 'Hello LAMP from hostname' $(curl -s http://169.254.169.254/latest/meta-data/public-hostname) 'with public IP' $(curl -s http://169.254.169.254/latest/meta-data/public-ipv4) > /var/www/projectlamp/index.html`
+```
+sudo echo 'Hello LAMP from hostname' $(curl -s http://169.254.169.254/latest/meta-data/public-hostname) 'with public IP' $(curl -s http://169.254.169.254/latest/meta-data/public-ipv4) > /var/www/projectlamp/index.html
+```
 
 Now let's test that the website is correctly displaying our content by opening the EC2 Public IP address in your web browser. `http://<Public-IP-Address>:80` . 
 
@@ -286,7 +333,9 @@ It should look something like this:
 
 Lastly, we must modify the directory index settings, such that the `index.html` no longer takes precedence over an `index.php` file. We can achieve this behavior by editing the /etc/apache2/mods-enabled/dir.conf file and then changing the order in which the `index.php file` is listed within the DirectoryIndex directive. Use the following command:
 
-`sudo vim /etc/apache2/mods-enabled/dir.conf`
+```
+sudo vim /etc/apache2/mods-enabled/dir.conf
+```
 
 In the vi editor, modify the default text to the following:
 
@@ -299,16 +348,22 @@ In the vi editor, modify the default text to the following:
 
 Next, after saving and closing the file, you must reload Apache so the changes take effect. Use the following command:
 
-`$ sudo systemctl reload apache2`
+```
+$ sudo systemctl reload apache2
+```
 
 Finally, we will create a PHP script. This will test whether or not PHP is correctly installed and configured on the server. Use the following command to create a new file named `index.php` inside your custom web root folder:
 
-`$ vim /var/www/projectlamp/index.php`
+```
+$ vim /var/www/projectlamp/index.php
+```
 
 This will open a blank file. Add the following text inside of the file:
 
-`<?php
-phpinfo();`
+```
+<?php
+phpinfo();
+```
 
 ![](./images/phpvim.png)
 
@@ -319,11 +374,12 @@ Refresh the page on your browser, and you will see a page similar to this (note:
 ![](./images/phpwebsite.png)
 
 
-
 Congratulations! You did it! We have completed our LAMP Web Stack Implementation. 
 
 Don't forget to terminate your EC2 instance and it's associated components on the AWS Console. Also, be sure to remove the file you created as it contains sensitive information using the following command:
 
-```$ sudo rm /var/www/projectlamp/index.php```
+```
+$ sudo rm /var/www/projectlamp/index.php
+```
 
 **Credit: This guide was inspired by [SkillEmbassy](samuelbartels20/web-stack-implementation)**
